@@ -15,8 +15,7 @@ app.use(
     credentials: true,
     origin: [
       'http://localhost:3000',
-      'https://tailorhub-2b8f3ad8d-josuemoora.vercel.app/',
-      'https://tailorhub-dev.fl0.io/'
+      'https://restaurants-app-drab.vercel.app/'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   })
