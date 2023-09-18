@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import express from 'express'
+import cors from 'cors'
 import restaurantsRouter from './routes/restaurants'
 import usersRouter from './routes/users'
 import favoritesRouter from './routes/favorites'
@@ -8,13 +9,20 @@ import cookieParser from 'cookie-parser'
 dotenv.config()
 const app = express()
 app.use(cookieParser())
-app.use((_req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*') // update to match the domain you will make the request from
-  res.header('Access-Control-Allow-Credentials', 'true')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
-  next()
-})
+app.use(cors({
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept'
+  ],
+  credentials: true,
+  origin: [
+    'http://localhost:3000',
+    'https://tailorhub-2b8f3ad8d-josuemoora.vercel.app/'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+}))
 // Lectura y parseo del body
 app.use(express.json({ limit: '1024mb' }))
 
