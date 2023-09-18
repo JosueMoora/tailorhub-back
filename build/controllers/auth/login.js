@@ -23,7 +23,7 @@ function authenticateUser(req, res) {
         });
     }
     const token = (0, generateJWT_1.generateJWT)(user.id);
-    res.cookie('token', token, { httpOnly: true, sameSite: 'lax', maxAge: 1000 * 60 * 60 });
+    res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60 });
     return res.status(200).json('acceso exitoso');
 }
 exports.authenticateUser = authenticateUser;

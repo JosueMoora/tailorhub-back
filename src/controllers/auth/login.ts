@@ -22,6 +22,6 @@ export function authenticateUser (req: Request, res: Response): Response {
   }
 
   const token = generateJWT(user.id)
-  res.cookie('token', token, { httpOnly: true, sameSite: 'lax', maxAge: 1000 * 60 * 60 })
+  res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60 })
   return res.status(200).json('acceso exitoso')
 }
