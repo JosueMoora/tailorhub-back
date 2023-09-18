@@ -26,4 +26,5 @@ export function authenticateUser (req: Request, res: Response): Response {
     res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60 })
     return res.status(200).json('acceso exitoso')
   }
+  return res.status(400).json('error al crear token')
 }
