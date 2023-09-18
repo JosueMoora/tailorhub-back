@@ -16,12 +16,13 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-CSRF-Token', 'Accept-Version', 'Content-Length', 'Content-MD5', 'Date', 'X-Api-Version'],
     credentials: true,
     origin: [
         'http://localhost:3000',
         'https://restaurants-app-drab.vercel.app',
-        'https://restaurants-app-josuemoora.vercel.app'
+        'https://restaurants-app-josuemoora.vercel.app',
+        'https://restaurants-app-git-main-josuemoora.vercel.app'
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
 }));

@@ -11,12 +11,13 @@ const app = express()
 app.use(cookieParser())
 app.use(
   cors({
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-CSRF-Token', 'Accept-Version', 'Content-Length', 'Content-MD5', 'Date', 'X-Api-Version'],
     credentials: true,
     origin: [
       'http://localhost:3000',
       'https://restaurants-app-drab.vercel.app',
-      'https://restaurants-app-josuemoora.vercel.app'
+      'https://restaurants-app-josuemoora.vercel.app',
+      'https://restaurants-app-git-main-josuemoora.vercel.app'
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
   })
