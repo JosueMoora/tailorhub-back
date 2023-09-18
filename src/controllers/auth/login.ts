@@ -22,6 +22,8 @@ export function authenticateUser (req: Request, res: Response): Response {
   }
 
   const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET ?? 'tokentest', { expiresIn: '4h' })
-  res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60 })
-  return res.status(200).json('acceso exitoso')
+  if (token !== null) {
+    res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60 })
+    return res.status(200).json('acceso exitoso')
+  }
 }
