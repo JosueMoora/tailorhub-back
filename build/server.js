@@ -23,7 +23,7 @@ app.use((0, cors_1.default)({
         'https://restaurants-app-drab.vercel.app',
         'https://restaurants-app-josuemoora.vercel.app'
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
 }));
 const PORT = (_a = process.env.PORT) !== null && _a !== void 0 ? _a : 8080;
 app.use((0, morgan_1.default)('dev'));

@@ -18,7 +18,7 @@ app.use(
       'https://restaurants-app-drab.vercel.app',
       'https://restaurants-app-josuemoora.vercel.app'
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
   })
 )
 
