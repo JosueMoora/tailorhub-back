@@ -20,7 +20,8 @@ app.use((0, cors_1.default)({
     credentials: true,
     origin: [
         'http://localhost:3000',
-        'https://restaurants-app-drab.vercel.app/'
+        'https://restaurants-app-drab.vercel.app',
+        'https://restaurants-app-josuemoora.vercel.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
