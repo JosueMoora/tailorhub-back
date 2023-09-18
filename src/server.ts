@@ -23,7 +23,7 @@ app.use(cors({
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
-const PORT = process.env.PORT ?? 3001
+const PORT = process.env.PORT ?? 8080
 
 app.use(morgan('dev'))
 app.use(express.json())
