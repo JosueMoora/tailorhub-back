@@ -23,8 +23,8 @@ export function authenticateUser (req: Request, res: Response): Response {
 
   const token = generateJWT(user.id)
   if (token !== null) {
-    res.cookie('token', token, { httpOnly: true, sameSite: 'lax', secure: true, maxAge: 1000 * 60 * 60 })
-    return res.status(200).json(token)
+    res.cookie('token', token, { httpOnly: true, sameSite: 'lax', maxAge: 1000 * 60 * 60 })
+    return res.status(200).json('session successfully')
   }
   return res.send('error al crear token')
 }
