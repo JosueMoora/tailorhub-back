@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
-// import { generateJWT } from '../../helpers/jwt/generateJWT'
+import { generateJWT } from '../../helpers/jwt/generateJWT'
 import { readUsersFile } from '../../helpers/users/getUsers'
 import { User } from '../../models/Users'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+
 export function authenticateUser (req: Request, res: Response): Response {
   const { username, password } = req.body
   const users = readUsersFile()
@@ -21,10 +21,10 @@ export function authenticateUser (req: Request, res: Response): Response {
     })
   }
 
-  const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET ?? 'tokentest', { expiresIn: '4h' })
+  const token = generateJWT(user.id)
   if (token !== null) {
-    res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60 })
-    return res.status(200).json('acceso exitoso')
+    res.cookie('token', token, { httpOnly: true, sameSite: 'lax', secure: true, maxAge: 1000 * 60 * 60 })
+    return res.status(200).json(token)
   }
-  return res.status(400).json('error al crear token')
+  return res.send('error al crear token')
 }
