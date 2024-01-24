@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.logout = void 0;
 function logout(req, res) {
     const token = req.cookies.token;
-    console.log(token);
     try {
         if (token === undefined) {
             return res.send('no token');

@@ -25,7 +25,7 @@ app.use((0, cors_1.default)({
     credentials: true,
     origin: [
         'http://localhost:3000',
-        'https://tailorhub-2b8f3ad8d-josuemoora.vercel.app/'
+        'https://restaurants-app-josuemoora.vercel.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));

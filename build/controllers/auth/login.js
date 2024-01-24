@@ -23,7 +23,10 @@ function authenticateUser(req, res) {
         });
     }
     const token = (0, generateJWT_1.generateJWT)(user.id);
-    res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60 });
-    return res.status(200).json('acceso exitoso');
+    if (token !== null) {
+        res.cookie('token', token, { httpOnly: true, sameSite: 'lax', maxAge: 1000 * 60 * 60 });
+        return res.status(200).json('session successfully');
+    }
+    return res.send('error al crear token');
 }
 exports.authenticateUser = authenticateUser;
