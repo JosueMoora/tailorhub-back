@@ -22,6 +22,6 @@ export async function authenticateUser (req: Request, res: Response): Promise<Re
   }
 
   const token = await generateJWT(user.id)
-  res.cookie('token', token, { sameSite: 'none', maxAge: 1000 * 60 * 60 })
+  res.cookie('token', token, { sameSite: 'none', secure: true, maxAge: 1000 * 60 * 60 })
   return res.status(200).json('acceso exitoso')
 }
