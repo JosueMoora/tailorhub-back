@@ -107,17 +107,5 @@
         ]
       }
     ]
-  },
-  {
-    "id": 3,
-    "name": "Diego",
-    "username": "Diego10",
-    "password": "$2b$10$/FBpTH6nGLZfOPcgYfmuJewdXfHs3XottY241GSY1FIscJ6LPffKu"
-  },
-  {
-    "id": 4,
-    "name": "antonio",
-    "username": "anto123",
-    "password": "$2b$10$aTDRCJ/LjHrDiRDhv.hB0Od6VfYAgoNCmMxkiTO9akFDAFRGxvu6e"
   }
 ]
