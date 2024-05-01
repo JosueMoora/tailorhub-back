@@ -20,7 +20,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'https://restaurants-app-josuemoora.vercel.app',
-    'https://restaurants-app-drab.vercel.app/login'
+    'https://restaurants-app-drab.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
