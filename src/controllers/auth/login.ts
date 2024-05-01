@@ -4,7 +4,7 @@ import { readUsersFile } from '../../helpers/users/getUsers'
 import { User } from '../../models/Users'
 import bcrypt from 'bcrypt'
 
-export function authenticateUser (req: Request, res: Response): Response {
+export async function authenticateUser (req: Request, res: Response): Promise<Response<any, Record<string, any>>> {
   const { username, password } = req.body
   const users = readUsersFile()
 
@@ -21,7 +21,7 @@ export function authenticateUser (req: Request, res: Response): Response {
     })
   }
 
-  const token = generateJWT(user.id)
-  res.cookie('token', token, { httpOnly: true, sameSite: 'lax', maxAge: 1000 * 60 * 60 })
+  const token = await generateJWT(user.id)
+  res.cookie('token', token, { sameSite: 'none', maxAge: 1000 * 60 * 60 })
   return res.status(200).json('acceso exitoso')
 }
