@@ -1,9 +1,9 @@
 import dotenv from 'dotenv'
 import express from 'express'
 import cors from 'cors'
-import restaurantsRouter from './routes/restaurants'
-import usersRouter from './routes/users'
-import favoritesRouter from './routes/favorites'
+import restaurantsRouter from '../src/routes/restaurants'
+import usersRouter from '../src/routes/users'
+import favoritesRouter from '../src/routes/favorites'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 dotenv.config()
