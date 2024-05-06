@@ -6,7 +6,7 @@ export function logout (req: Request, res: Response): Response {
     if (token === undefined) {
       return res.send('no token')
     } else {
-      res.cookie('token', null, { secure: true, sameSite: 'none', maxAge: 0 })
+      res.cookie('token', null, { secure: true, sameSite: 'none', maxAge: 0, httpOnly: false })
       return res.status(200).json('Sesión cerrada exitosamente')
     }
   } catch (error) {
