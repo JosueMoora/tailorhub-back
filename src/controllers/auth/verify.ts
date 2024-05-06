@@ -9,7 +9,7 @@ export const verify = (req: Request, res: Response): any => {
     return res.status(401).json({ msg: 'The token is required' })
   }
   try {
-    const { id } = jwt.verify(token, process.env.TOKEN_SECRET ?? 'tokentest') as Payload
+    const { id } = jwt.verify(token, process.env.TOKEN_SECRET ?? 'fdsjfdsjfsd54353') as Payload
     const users = readUsersFile()
     const user = users.find((u) => u.id === id)
     if (user === undefined) {
