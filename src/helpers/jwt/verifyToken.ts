@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
-import { readUsersFile } from '../users/getUsers'
+import readUsersFile from '../users/getUsers'
 import { Payload } from '../../models/Payload'
 
 export const TokentValidation = (req: Request, res: Response, next: NextFunction): any => {

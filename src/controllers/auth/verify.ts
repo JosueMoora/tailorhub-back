@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import { Payload } from '../../models/Payload'
-import { readUsersFile } from '../../helpers/users/getUsers'
+import readUsersFile from '../../helpers/users/getUsers'
 
 export const verify = (req: Request, res: Response): any => {
   const { token } = req.cookies
@@ -15,8 +15,8 @@ export const verify = (req: Request, res: Response): any => {
     if (user === undefined) {
       return res.status(401).json({ msg: 'Token is not valid - user does not exist' })
     }
-    return res.status(200).json({ name: user.name, username: user.username })
+    return res.status(200).json({ id: user.id, name: user.name, email: user.email })
   } catch (error) {
-    return res.json(error)
+    return res.status(500).json({ msg: 'Internal Server Error' })
   }
 }

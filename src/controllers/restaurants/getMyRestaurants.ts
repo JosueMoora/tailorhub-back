@@ -3,10 +3,11 @@ import { Request, Response } from 'express'
 import { readRestaurantsFile } from '../../helpers/restaurants/getRestaurants'
 import { readCommentsFile } from '../../helpers/comments/getComments'
 
-export const getRestaurants = (_req: Request, res: Response): Response => {
+export const getMyRestaurants = (req: Request, res: Response): Response => {
+  const { id } = req.params
   const restaurants = readRestaurantsFile()
   const comments = readCommentsFile()
-
+  const myRestaurants = restaurants.filter(res => res.userId === Number(id))
   // objeto para almacenar la suma de ratings por restaurante y la cantidad de comentarios
   const ratingsSumMap: { [key: string]: number } = {}
   const commentsCountMap: { [key: string]: number } = {}
@@ -18,7 +19,7 @@ export const getRestaurants = (_req: Request, res: Response): Response => {
     commentsCountMap[restaurantId] = (commentsCountMap[restaurantId] || 0) + 1
   })
 
-  const restaurantsWithRating = restaurants.map(restaurant => {
+  const restaurantsWithRating = myRestaurants.map(restaurant => {
     const restaurantId = restaurant.id.toString()
     const ratingsSum = ratingsSumMap[restaurantId] || 0
     const commentsCount = commentsCountMap[restaurantId] || 1 // Si no hay comentarios, se asume 1 para evitar división por cero
@@ -29,6 +30,5 @@ export const getRestaurants = (_req: Request, res: Response): Response => {
       comentarios: commentsCountMap[restaurant.id.toString()] || 0
     }
   })
-
   return res.status(200).json({ restaurants: restaurantsWithRating })
 }

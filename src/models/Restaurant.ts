@@ -1,8 +1,8 @@
 export interface Restaurant {
   id: number
+  userId: number
   name: string
-  neighborhood: string
   address: string
   image: string
-  cuisineType: string
+  description: string
 }

@@ -1,15 +1,26 @@
 import { Request, Response } from 'express'
 import { generateJWT } from '../../helpers/jwt/generateJWT'
-import { readUsersFile } from '../../helpers/users/getUsers'
-import { User } from '../../models/Users'
+import readUsersFile from '../../helpers/users/getUsers'
+import { User } from '../../models/User'
 import bcrypt from 'bcrypt'
 
-export async function authenticateUser (req: Request, res: Response): Promise<Response<any, Record<string, any>>> {
-  const { username, password } = req.body
+export async function authenticateUser (req: Request, res: Response): Promise<Response> {
+  const { email, password } = req.body
   const users = readUsersFile()
 
-  const user = users.find((u: User) => u.username === username)
-  if ((user == null)) {
+  if (email === '') {
+    return res.status(400).json({
+      msg: 'el correo es obligatorio'
+    })
+  }
+  if (password === '') {
+    return res.status(400).json({
+      msg: 'la contraseña es obligatoria'
+    })
+  }
+
+  const user = users.find((u: User) => u.email === email)
+  if (user == null) {
     return res.status(400).json({
       msg: 'Usuario no registrado'
     })
@@ -22,6 +33,12 @@ export async function authenticateUser (req: Request, res: Response): Promise<Re
   }
 
   const token = await generateJWT(user.id)
-  res.cookie('token', token, { sameSite: 'none', secure: true, maxAge: 1000 * 60 * 60 })
-  return res.status(200).json('acceso exitoso')
+  res.cookie('token', token, { secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60 })
+  return res.status(200).json({
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    }
+  })
 }
