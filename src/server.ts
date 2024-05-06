@@ -19,7 +19,7 @@ app.use(cors({
   credentials: true,
   origin: [
     'http://localhost:3000',
-    'https://tailorhub-front.vercel.app/'
+    'https://tailorhub-front.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
