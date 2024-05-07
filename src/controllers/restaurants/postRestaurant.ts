@@ -15,14 +15,13 @@ export const postRestaurant = async (req: Request, res: Response): Promise<Respo
   try {
     const { id, name, address, description } = req.body
     const result = await cloudinary.uploader.upload(req.file?.path as any)
-
     // Obtener la URL de la imagen generada por Cloudinary
     const imageUrl = result.secure_url
 
     // Crear el objeto del restaurante con la URL de la imagen
     const newRestaurant: Restaurant = {
       id: restaurants.length + 1,
-      userId: Number(id),
+      userId: id,
       name,
       address,
       image: imageUrl,

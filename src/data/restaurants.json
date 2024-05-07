@@ -17,6 +17,7 @@
   },
   {
     "id": 4,
+    "userId": 2,
     "name": "Pizza mia",
     "address": "cc las americas",
     "image": "https://res.cloudinary.com/doeglfqw7/image/upload/v1714944828/es1e7dlxzj7vdinot5wg.png",
