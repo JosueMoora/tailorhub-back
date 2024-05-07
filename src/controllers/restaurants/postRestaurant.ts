@@ -22,7 +22,7 @@ export const postRestaurant = async (req: Request, res: Response): Promise<Respo
     // Crear el objeto del restaurante con la URL de la imagen
     const newRestaurant: Restaurant = {
       id: restaurants.length + 1,
-      userId: id,
+      userId: Number(id),
       name,
       address,
       image: imageUrl,

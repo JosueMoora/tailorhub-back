@@ -10,7 +10,7 @@ export const postComment = (req: Request, res: Response): Response => {
     id: comments.length + 1,
     userId: Number(id),
     restaurantId: Number(restaurantId),
-    rating: rating(rating),
+    rating: Number(rating),
     description
   }
   comments.push(newComment)

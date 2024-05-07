@@ -15,7 +15,7 @@ export const putComment = (req: Request, res: Response): Response => {
 
   if (index !== -1 && comments[index].userId === userId) {
     comments[index].description = description
-    comments[index].rating = rating
+    comments[index].rating = Number(rating)
     try {
       saveCommentsFile(comments)
       return res.json(comments[index])

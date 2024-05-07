@@ -19,5 +19,12 @@
     "restaurantId": 2,
     "rating": 0,
     "description": "meh"
+  },
+  {
+    "id": 4,
+    "userId": 1,
+    "restaurantId": 4,
+    "rating": 4,
+    "description": "buena comida"
   }
 ]
