@@ -9,20 +9,7 @@ import cookieParser from 'cookie-parser'
 dotenv.config()
 const app = express()
 app.use(cookieParser())
-app.use(cors({
-  allowedHeaders: [
-    'Origin',
-    'X-Requested-With',
-    'Content-Type',
-    'Accept'
-  ],
-  credentials: true,
-  origin: [
-    'http://localhost:3000',
-    'https://tailorhub-front.vercel.app'
-  ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
-}))
+app.use(cors())
 const PORT = process.env.PORT ?? 3001
 
 app.use(morgan('dev'))
