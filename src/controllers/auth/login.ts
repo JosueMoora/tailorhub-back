@@ -33,7 +33,7 @@ export async function authenticateUser (req: Request, res: Response): Promise<Re
   }
 
   const token = await generateJWT(user.id)
-  res.cookie('token', token, { secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60, domain: 'https://tailorhub-back.vercel.app/' })
+  res.cookie('token', token, { secure: true, sameSite: 'none', maxAge: 1000 * 60 * 60, domain: 'https://tailorhub-front.vercel.app/' })
   return res.status(200).json({
     user: {
       id: user.id,
