@@ -9,7 +9,7 @@ export const postComment = (req: Request, res: Response): Response => {
   const newComment: Comment = {
     id: comments.length + 1,
     userId: Number(id),
-    restaurantId,
+    restaurantId: Number(restaurantId),
     rating: rating(rating),
     description
   }

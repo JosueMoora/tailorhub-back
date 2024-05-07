@@ -13,7 +13,7 @@ export const putComment = (req: Request, res: Response): Response => {
 
   const commentToUpdate = comments.find((comment) => comment.id === parseInt(id))
 
-  if (commentToUpdate !== undefined && commentToUpdate.userId === userId) {
+  if (commentToUpdate !== undefined && commentToUpdate.userId === Number(userId)) {
     commentToUpdate.description = description
     commentToUpdate.rating = Number(rating)
 
