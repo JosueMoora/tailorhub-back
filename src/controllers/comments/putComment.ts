@@ -13,9 +13,9 @@ export const putComment = (req: Request, res: Response): Response => {
 
   const commentToUpdate = comments.find((comment) => comment.id === parseInt(id))
 
-  if (commentToUpdate != null && commentToUpdate.userId === userId) {
+  if (commentToUpdate !== undefined && commentToUpdate.userId === userId) {
     commentToUpdate.description = description
-    commentToUpdate.rating = rating
+    commentToUpdate.rating = Number(rating)
 
     try {
       saveCommentsFile(comments)

@@ -8,9 +8,9 @@ export const postComment = (req: Request, res: Response): Response => {
   const comments = readCommentsFile()
   const newComment: Comment = {
     id: comments.length + 1,
-    userId: id,
+    userId: Number(id),
     restaurantId,
-    rating,
+    rating: rating(rating),
     description
   }
   comments.push(newComment)
