@@ -11,15 +11,14 @@ export const putComment = (req: Request, res: Response): Response => {
 
   const comments: Comment[] = readCommentsFile()
 
-  const commentToUpdate = comments.find((comment) => comment.id === parseInt(id))
+  const index = comments.findIndex((comment) => comment.id === parseInt(id))
 
-  if (commentToUpdate !== undefined && commentToUpdate.userId === Number(userId)) {
-    commentToUpdate.description = description
-    commentToUpdate.rating = Number(rating)
-
+  if (index !== -1 && comments[index].userId === userId) {
+    comments[index].description = description
+    comments[index].rating = rating
     try {
       saveCommentsFile(comments)
-      return res.json(commentToUpdate)
+      return res.json(comments[index])
     } catch (error) {
       console.error('Error al guardar los comentarios:', error)
       return res.status(500).json({ message: 'Internal server error' })
